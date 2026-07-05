@@ -32,6 +32,8 @@ class  slinklist:public list<T>
     const T& visit(int) const;
     void traverse() const;
     int len() const {return current_length;}
+    slinklist operator+(const slinklist &B) const;
+    slinklist& operator=(const slinklist &B);
     
 };
 
@@ -115,6 +117,47 @@ void slinklist<elemType>::traverse() const
     cout << endl;
 }
 
+template<class T>
+slinklist<T> slinklist<T>::operator+(const slinklist&B) const
+{
+    slinklist<T> C;
+    C.current_length=current_length+B.current_length;
+    node* temp=C.head,*p;
+    p=head->next;
+    while (p!=nullptr)
+    {
+        temp=temp->next=new node{p->data};
+        p=p->next;
+    }
+    p=B.head->next;
+    while(p!=nullptr)
+    {
+        temp=temp->next=new node{p->data};
+        p=p->next;
+    }
+    
+    return C;
+    
+
+}
+
+template<class T>
+slinklist<T>& slinklist<T>::operator=(const slinklist&B)
+{
+    if(this==&B) return *this;
+    this->clear();
+    current_length=B.current_length;
+    node*p=B.head->next,*temp=head;
+    while (p!=nullptr)
+    {
+        temp=temp->next=new node{p->data};
+        p=p->next;
+    }
+    
+    return *this;
+    
+
+}
 
 
 

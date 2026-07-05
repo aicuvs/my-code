@@ -1,5 +1,6 @@
 #ifndef SEQLIST_H
 #define SEQLIST_H
+#include<iostream>
 #include"list.h"
 using namespace std;
 
@@ -23,6 +24,22 @@ class seqlist:public list<T>
     const T& visit(int)const;
     void traverse()const;
     void erase(const T&);
+    seqlist operator+(const seqlist&B) const;
+    seqlist &operator=(const seqlist&B);
+  
+        
+    class iterator
+    {
+        private:
+        T* p;
+        iterator (T* p):p(p){};
+        public:
+        friend class seqlist;
+    };
+    iterator begin()
+    {
+        return iterator{data};
+    }
 };
 template <class T>
 seqlist<T>::seqlist(int init_size)
@@ -112,6 +129,32 @@ void seqlist<T>::erase(const T&x)
     current_length-=sum;
 
 }
+
+template<class T>
+seqlist<T> seqlist<T>::operator+(const seqlist& B) const
+{
+    seqlist<T> C {current_length+B.current_length};
+    C.current_length=current_length+B.current_length;
+    for(int i=0;i<current_length;++i) C.data[i]=data[i];
+    for(int i=0;i<B.current_length;++i) C.data[current_length+i]=B.data[i];
+    return C;
+    
+
+
+}
+template<class T>
+seqlist<T>& seqlist<T>::operator=(const seqlist& B)
+{
+    if(&B==this) return *this;
+    while (max_size<B.current_length) double_space();
+    current_length=B.current_length;
+    for(int i=0;i<current_length;++i) data[i]=B.data[i];
+    return *this;
+    
+    
+
+}
+
 
 
 
