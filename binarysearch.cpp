@@ -22,6 +22,6 @@ int binarysearch(const T* arr,int size,const T& x)
         if(x<arr[mid]) max=mid-1;
         else min=mid+1;
     }
-    return -1;
+    return -2;
     
 }
