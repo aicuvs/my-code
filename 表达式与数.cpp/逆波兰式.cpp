@@ -2,27 +2,31 @@
 
 #include<stack>
 
+#include<algorithm>
+
+#include<string>
+
+#include<vector>
+
+#include<numeric>
+
 using namespace std;
 
 int main()
 {
     stack<char> st;
-    char cur;
-    int s1,s2;
-    while (cin>>cur)
-    {
-        if(cur>='0'&&cur<='9') st.push(cur);
-        else{
-            s1=st.top()-'0';
+    char ch;
+    while(cin>>ch){
+        if(ch>='0'&&ch<='9') st.push(ch);
+        else {
+            int n1=st.top()-'0';
             st.pop();
-            s2=st.top()-'0';
+            int n2=st.top()-'0';
             st.pop();
-            if(cur=='+') st.push(((s1+s2)%10+10)%10+'0');
-            if(cur=='-') st.push(((s2-s1)%10+10)%10+'0');
-            if(cur=='*') st.push(((s1*s2)%10+10)%10+'0');
+            if(ch=='+')st.push(((n1+n2)%10+10)%10+'0');
+            if(ch=='-')st.push(((n2-n1)%10+10)%10+'0');
+            if(ch=='*')st.push(((n1*n2)%10+10)%10+'0');
         }
     }
     cout<<st.top();
-    system("pause");
-    
 }*/

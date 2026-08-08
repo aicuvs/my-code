@@ -1,18 +1,32 @@
-/*#include<iostream>
+#include<iostream>
+
+#include<stack>
+
+#include<algorithm>
+
+#include<string>
+
+#include<vector>
+
+#include<numeric>
+
+#include<queue>
+
+#include<cstring>
 
 using namespace std;
 
+
+
 int main()
 {
-    long long n,odd,even=0,tmp,tmp1;
-    cin>>n;
-    cin>>odd;
-    for(long long i=1;i<n;++i){
-        cin>>tmp;
-        tmp1=odd;
-        odd=max(odd,even+tmp);
-        even=max(even,tmp1+2*tmp);
+    long long N,A,e=0,o,tmp;
+    cin>>N>>o;
+    while(--N>0){
+        cin>>A;
+        tmp=e;
+        e=max(e,o+2*A);
+        o=max(o,tmp+A);
     }
-    cout<<max(odd,even);
-    system("pause");
-}*/
+    cout<<max(e,o);
+}

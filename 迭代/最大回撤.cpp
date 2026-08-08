@@ -1,24 +1,15 @@
-/*#include<iostream>
-
-#include<vector>
-
-using namespace std;
-
+#include<iostream>
 int main()
 {
-    int n,Max,cur=0;
-    cin>>n;
-    vector<int> vec;
-    vec.resize(n);
-    for(int i=0;i<n;++i) cin>>vec[i];
-    Max=vec[0];
-    for(int i=1;i<n;++i) {
-        Max=(Max>vec[i])?Max:vec[i];
-        cur=(Max-vec[i]>cur)?Max-vec[i]:cur;
-    }
-    cout<<cur;
-    system("pause");
-    
-
-
-}*/
+  int n;
+  std::cin >> n;
+  int m = -1'000'000;
+  int d = 0;
+  while (n-->0) {
+    int a;
+    std::cin >> a;
+    d = std::max(d, m - a);
+    m = std::max(m, a);		
+  }
+  std::cout << d << "\n";
+}
