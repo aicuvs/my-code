@@ -1,4 +1,4 @@
-/*#include<iostream>
+#include<iostream>
 
 #include<vector>
 
@@ -23,4 +23,4 @@ int main()
     cout<<f(n,sum);
     system("pause");
 
-}*/
+}
