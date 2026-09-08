@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// 用辗转相除法计算最大公约数。
 int divisor(int a,int b)
 {
     if(b==0) return a;
